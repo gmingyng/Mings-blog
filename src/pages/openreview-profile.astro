@@ -1,0 +1,30 @@
+---
+import PageLayout from '@/layouts/BaseLayout.astro'
+import Section from '@/components/home/Section.astro'
+---
+
+<head>
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+</head>
+
+<PageLayout meta={{ title: 'zmy-profile' }} highlightColor="#659EB9">
+  <main class="flex w-full flex-col items-center">
+    <section class="animate mb-10 flex flex-col items-center gap-y-7" id="content-header">
+      <div class="flex flex-col items-center gap-y-4">
+        <h1 class="text-3xl font-medium">Mingyang Zhou</h1>
+      </div>
+    </section>
+
+    <div id="content" class="animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6">
+      <Section title="Mail">
+        <p class="text-muted-foreground">mingyangzhou@stumail.ysu.edu.cn</p>
+      </Section>
+
+      <Section title="School">
+        <p class="text-muted-foreground">Yanshan University</p>
+      </Section>
+
+      
+    </div>
+  </main>
+</PageLayout>

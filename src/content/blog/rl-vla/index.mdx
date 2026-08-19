@@ -122,14 +122,18 @@ Ablation:
 Limits: 存在行为漂移问题，在线RL过程中由于稀疏奖励和噪声，策略表现可能不稳定。  
 Future Work: 改进信度分配问题, 将改进后的专家策略重新蒸馏回通用 VLA 模型中。
 
-## Next
-[paper]()
-![next]()
-### Question
+## CFGRL
+[paper](https://arxiv.org/abs/2505.23458)
+![cfgrl](cfgrl.png)
 
 ### Motivation
-
+1. 传统迭代式RL难以扩展，对超参数敏感，难以稳定训练
+2. 生成式模型模仿学习出色但是无法超越数据
+3. 能否结合两者优势，实现高效稳定的策略优化？
 ### Method
+Insight: 
+
+### Data
 
 ### Arch
 Backbone:   
@@ -137,8 +141,46 @@ Components:
 Loss&Reward: flow matching loss, sparse  
 
 ### Experiments
-Benchmarks: 
-Realworld:
+Benchmarks: ExORL Benchmark&OGBench(Locomotion+Manipulation)  
+Baselines: 
+1. AWR(采用相同IQL训练的价值函数)，AWR 扫描温度参数1/β∈{1,3,10,30}，CFGRL扫描引导权重w∈{1,1.25,1.5,2.0,3.0}
+2. BC, FLowBC, GCBC, FlowGCBC, Hierarchical GCBC
+Results: 
+1. 随着参数增加，AWR的性能往往在1/β=10左右饱和，而CFGRL的性能随着w增加表现出更持久的提升趋势
+2. 
 Ablation: 
+1. Guidance Weight: w提升时成功率上升，但是过大时性能可能会因为策略过度偏离数据分布而下降
+2. Network Sharing: 得益于共享的特征表示, 共享网络架构表现更好，且外推能力更强  
 
 ### Conclusion
+CFGRL 建立了一个连接扩散引导和RL策略改进的原则性框架。
+它作为一种“即插即用”的策略提取工具，能在保持监督学习训练稳定性的同时，提供可控的策略改进能力
+Limits:   
+Future Work:  
+
+
+## Next
+[paper]()
+![next]()
+
+### Motivation
+
+### Method
+Insight: 
+
+### Data
+
+### Arch
+Backbone:   
+Components:  
+Loss&Reward: flow matching loss, sparse  
+
+### Experiments
+Benchmarks:   
+Realworld:   
+Ablation:   
+
+### Conclusion
+
+Limits:   
+Future Work:  
